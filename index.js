@@ -26,7 +26,7 @@ const inventory = [
  * @param {Item[]} items - array of items
  */
 function logNames(items) {
-  // TODO: use `forEach`
+  items.forEach((item) => console.log(item.name));
 }
 
 /**
@@ -34,7 +34,7 @@ function logNames(items) {
  * @returns {string[]} an array of item names in all uppercase
  */
 function getUppercaseNames(items) {
-  // TODO: use `map`
+  return items.map((item) => item.name.toUpperCase());
 }
 
 /**
@@ -43,8 +43,14 @@ function getUppercaseNames(items) {
  * @returns {Item} - the item in `items` with the given `id`
  */
 function getItemById(items, id) {
-  // TODO: use `find`
+  if (items.find((item) => item.id === id)) {
+    return items.find((item) => item.id === id);
+  } else {
+    return `Item with id ${id} not found.`;
+  }
 }
+
+// TODO: use `find`
 
 /**
  * @param {Item[]} items - array of items
@@ -52,7 +58,12 @@ function getItemById(items, id) {
  * @returns {number} the price of the item named `name` if found
  */
 function getItemPriceByName(items, name) {
-  // TODO: use a loop!
+  for (item of items) {
+    if (item.name === name) {
+      return item.price;
+    }
+  }
+  return `nothing was found`;
 }
 
 /**
@@ -61,7 +72,7 @@ function getItemPriceByName(items, name) {
  * @returns {Item[]} array of items that belong to the given `category`
  */
 function getItemsByCategory(items, category) {
-  // TODO: use `filter`
+  return items.filter((item) => item.category === category);
 }
 
 /**
@@ -69,7 +80,7 @@ function getItemsByCategory(items, category) {
  * @returns {number} the total quantity of all items
  */
 function countItems(items) {
-  // TODO: use `reduce`
+  return items.reduce((count, item) => count + item.quantity, 0);
 }
 
 /**
@@ -77,7 +88,7 @@ function countItems(items) {
  * @returns {number} the cost of all given items
  */
 function getTotalPrice(items) {
-  // TODO: use `reduce`
+  return items.reduce((count, item) => count + item.price, 0);
 }
 
 // === READ BUT DO NOT CHANGE THE CODE BELOW ===
