@@ -50,8 +50,6 @@ function getItemById(items, id) {
   }
 }
 
-// TODO: use `find`
-
 /**
  * @param {Item[]} items - array of items
  * @param {string} name - name of the item to find
